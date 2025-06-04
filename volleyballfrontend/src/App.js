@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import YouTube from "react-youtube";
 import { Typography, Button, TextField, Stack, Select, MenuItem, FormControl, InputLabel } from '@mui/material';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
@@ -25,8 +24,7 @@ const imageMap = {
 
 const sample_sheet_url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTet6UPHdfdsaKkFN_VB5ggHacxEDxakmZH6syhroLB7oJ3aHr5clmSbEipnQTTfLy6nfdYe6M6ZAHs/pub?output=csv"
 
-const BackgroundMusicPlayer = () => {
-  const [play, setPlay] = useState(false);
+const App = () => {
   const lambda_url = "https://ghwlzghpgj.execute-api.us-east-2.amazonaws.com/default/generateteams"
   const [teams, setTeams] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -71,7 +69,6 @@ const BackgroundMusicPlayer = () => {
 
   const handlePlay = async () => {
     callLambda();
-    setPlay(true);
   };
 
   const handleNumTeams = (event) => {
@@ -79,19 +76,8 @@ const BackgroundMusicPlayer = () => {
 
   };
 
-
-
-
-  const onReady = (event) => {
-    event.target.mute(); // Start muted
-    event.target.playVideo();
-    // Then unmute immediately or after a short delay:
-    setTimeout(() => {
-      event.target.unMute();
-    }, 500);
-  };
-
   return (
+
     <div>
       <div style={{ display: 'flex', justifyContent: 'center', paddingTop: '2rem' }}>
         <img src={brawlImg} alt="Brawl" style={{ width: '50%', height: 'auto' }} />
@@ -246,33 +232,8 @@ const BackgroundMusicPlayer = () => {
 
 
       }
-      {play && (
-        <div
-          style={{
-            width: 10,
-            height: 10,
-            overflow: "hidden",
-          }}
-        >
-          <YouTube
-            videoId="1SvzJ2V6lfU" // Replace with actual video ID
-            opts={{
-              height: "1",
-              width: "1",
-              playerVars: {
-                autoplay: 1,
-                controls: 0,
-                modestbranding: 1,
-                loop: 1,
-                playlist: "1SvzJ2V6lfU", // Required for looping
-              },
-            }}
-            onReady={onReady}
-          />
-        </div>
-      )}
     </div>
   );
 };
 
-export default BackgroundMusicPlayer;
+export default App;
