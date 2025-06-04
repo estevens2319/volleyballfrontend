@@ -253,8 +253,8 @@ const BackgroundMusicPlayer = () => {
           <YouTube
             videoId="1SvzJ2V6lfU" // Replace with actual video ID
             opts={{
-              height: "0",
-              width: "0",
+              height: "1",
+              width: "1",
               playerVars: {
                 autoplay: 1,
                 controls: 0,
