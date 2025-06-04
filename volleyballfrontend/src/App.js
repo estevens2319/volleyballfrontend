@@ -83,8 +83,12 @@ const BackgroundMusicPlayer = () => {
 
 
   const onReady = (event) => {
-    event.target.setVolume(50);
+    event.target.mute(); // Start muted
     event.target.playVideo();
+    // Then unmute immediately or after a short delay:
+    setTimeout(() => {
+      event.target.unMute();
+    }, 500);
   };
 
   return (
