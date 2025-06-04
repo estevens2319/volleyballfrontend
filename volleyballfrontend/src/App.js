@@ -11,7 +11,7 @@ import piplupImg from './piplup.png'
 import turtwigImg from './turtwig.png'
 import chimcharImg from './chimchar.png'
 
-import brawlImg from './brawlclear.png';
+import brawlImg from './aibrawl.png';
 
 const imageMap = {
   "Clefairy": clefairyImg,
@@ -90,7 +90,7 @@ const BackgroundMusicPlayer = () => {
   return (
     <div>
       <div style={{ display: 'flex', justifyContent: 'center', paddingTop: '2rem' }}>
-        <img src={brawlImg} alt="Brawl" style={{ width: '70%', height: 'auto' }} />
+        <img src={brawlImg} alt="Brawl" style={{ width: '50%', height: 'auto' }} />
       </div>
       {loading && (
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', paddingTop: '2rem' }}>
