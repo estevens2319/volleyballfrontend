@@ -5,10 +5,21 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import { CircularProgress } from '@mui/material';
+import clefairyImg from './clefairy.png'
+import pikachuImg from './pikachu.png'
+import piplupImg from './piplup.png'
+import turtwigImg from './turtwig.png'
+import chimcharImg from './chimchar.png'
 
 import brawlImg from './brawlclear.png';
 
-
+const imageMap = {
+  "Clefairy": clefairyImg,
+  "Pikachu": pikachuImg,
+  "Piplup": piplupImg,
+  "Turtwig": turtwigImg,
+  "Chimchar": chimcharImg
+}
 
 
 
@@ -133,10 +144,10 @@ const BackgroundMusicPlayer = () => {
                         }}
                       >
                         <img
-                          src={brawlImg}
+                          src={imageMap[value]}
                           alt={value}
                           style={{
-                            width: '80%',          // or any fixed width
+                            width: '40%',          // or any fixed width
                             objectFit: 'contain',   // or 'cover' depending on desired effect
                             marginBottom: 10,
                           }}
