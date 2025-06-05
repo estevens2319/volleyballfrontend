@@ -30,10 +30,11 @@ const App = () => {
   const [loading, setLoading] = useState(false);
   const [sheetsLink, setSheetsLink] = useState("");
   const [numTeams, setNumTeams] = useState("Default");
-
+  const [error, setError] = useState(null);
 
   const callLambda = async () => {
     setTeams(null);
+    setError(null);
     let currSheetsLink = ""
     if (sheetsLink === "") {
       currSheetsLink = sample_sheet_url;
@@ -62,8 +63,14 @@ const App = () => {
     });
 
     const data = await response.json();
-    setTeams(JSON.parse(data.body));
+    const body = JSON.parse(data.body);
     setLoading(false);
+    if (body.error) {
+      setError(body.error);
+    }
+    else {
+      setTeams(body);
+    }
   };
 
 
@@ -90,7 +97,15 @@ const App = () => {
           </Typography>
         </div>
       )}
+      {error && (
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', paddingTop: '2rem' }}>
 
+          <Typography>
+            {"Error: " + error}
+          </Typography>
+        </div>
+
+      )}
       {teams && (
         <div>
           <Typography style={{
